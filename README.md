@@ -3,14 +3,14 @@
 (렌더링 된 문서: https://django-orm-cookbook-ko.readthedocs.io/en/latest/)
 
 
-장고 ORM 요리책은 장고를 이용한 다양한 레시피(조리법)를 담은 책입니다. `장고 ORM/쿼리셋으로 ~을 하려면 어떻게 하나요?` 하는 50여 개의 질문과 답을 담고 있습니다.
+장고 ORM 요리책은 장고를 이용한 다양한 레시피(조리법)를 담은 책입니다. `장고 ORM/쿼리셋으로 ~을 하려면 어떻게 하나요?` 형식으로 이루어진 50여 개 질문과 답을 담고 있습니다.
 
 이 책에서는 전체 주제 공통으로 아래에서 설명하는 데이터 모델을 이용합니다.
 
 
 ### 실습용 모델 준비
 
-여러분은 장고를 이용하여 UMSRA의 연구원들이 사용할 모델과 관리자 뷰(admin)를 제작하는 중입니다. 여러분은 프로젝트를 개체를 나타내는 `entities` 앱과 사건을 나타내는 `events` 앱 두 개로 나누어 작성하게 되었습니다. 그리고 각 앱의 모델을 다음과 같이 준비했습니다. (지금 자세히 보지 않아도 됩니다. 책을 보다가 필요할 때 참고해주세요.)
+여러분은 장고를 이용하여 UMSRA의 연구원들이 사용할 모델과 관리자 뷰(admin)를 제작하는 중입니다. 여러분은 개체를 나타내는 `entities` 앱과 사건을 나타내는 `events` 앱 두 개로 나누어 프로젝트를 작성하게 되었습니다. 그리고 각 앱의 모델을 다음과 같이 준비했습니다. (지금 자세히 보지 않아도 됩니다. 책을 보다가 필요할 때 참고해주세요.)
 
 
 #### Events 앱의 모델
@@ -21,6 +21,7 @@
     from entities.models import Hero, Villain
     from django.contrib.auth.models import User
     import uuid
+    
     
     class Epic(models.Model):
         name = models.CharField(max_length=255)
@@ -56,6 +57,7 @@
         father_name = models.CharField(max_length=100)
         mother_name = models.CharField(max_length=100)
     
+    
     class Article(models.Model):
         headline = models.CharField(max_length=100)
         pub_date = models.DateField()
@@ -70,6 +72,7 @@
     
         class Meta:
             ordering = ('headline',)
+    
     
     class TempUser(models.Model):
         first_name = models.CharField(max_length=100)
@@ -177,6 +180,7 @@
     
         class Meta:
             proxy = True
+    
     
     class Villain(Entity):
         is_immortal = models.BooleanField(default=False)
